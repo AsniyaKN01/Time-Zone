@@ -1,0 +1,16 @@
+[
+  {
+    "id": "8e860442-e0d9-4473-82d1-65feea529d1d",
+    "username": "Asniya Krishna",
+    "email": "asniyakn97@gmail.com",
+    "passwordHash": "$2b$10$NngGWLH5YM9bI09JOsFNU.s82X5Hej6xnTtYdSPtefvxS/TwQW0Km",
+    "createdAt": "2026-03-23T17:20:44.000Z"
+  },
+  {
+    "id": "ca44fe4e-ff46-4bc0-bc49-a56de6d7eedd",
+    "username": "christinasander",
+    "email": "christinasander04@gmail.com",
+    "passwordHash": "$2b$10$qolVXgoAp8edRmaiD5uoQeuwPxNthEqJ.5tBOPdQQTz3NIUEtBfWK",
+    "createdAt": "2026-03-24T13:42:43.007Z"
+  }
+]

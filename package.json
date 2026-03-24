@@ -1,22 +1,14 @@
 {
-  "name": "time zone",
+  "name": "time-zone",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "description": "Monorepo: backend (Express) + frontend (Vite)",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "repository": "https://github.com/AsniyaKN01/Time-Zone",
-  "type": "commonjs",
-  "dependencies": {
-    "cors": "^2.8.6",
-    "express": "^5.2.1",
-    "moment-timezone": "^0.6.0"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.14"
+    "install:all": "npm install --prefix backend && npm install --prefix frontend",
+    "backend": "npm run dev --prefix backend",
+    "frontend": "npm run dev --prefix frontend",
+    "start:backend": "npm start --prefix backend",
+    "android:build": "npm run android:build --prefix frontend",
+    "android:open": "npm run android:open --prefix frontend"
   }
 }

@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oxy - Register</title>
+    <style>
+      :root {
+        --bg1: #0b1025;
+        --bg2: #7c3aed;
+        --bg3: #f43f5e;
+        --text: #f8fafc;
+        --muted: #cbd5e1;
+        --card: rgba(15, 23, 42, 0.72);
+        --border: rgba(148, 163, 184, 0.35);
+        --input: rgba(255, 255, 255, 0.1);
+        --primary: #34d399;
+        --primary-2: #22d3ee;
+      }
+      :root[data-theme="light"] {
+        --bg1: #f8fafc;
+        --bg2: #dbeafe;
+        --bg3: #fb7185;
+        --text: #0f172a;
+        --muted: #334155;
+        --card: rgba(255, 255, 255, 0.8);
+        --border: rgba(100, 116, 139, 0.28);
+        --input: rgba(255, 255, 255, 0.88);
+        --primary: #10b981;
+        --primary-2: #06b6d4;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+        color: var(--text);
+        background: radial-gradient(circle at 10% 20%, #22d3ee, transparent 30%),
+          radial-gradient(circle at 80% 15%, var(--bg3), transparent 30%),
+          linear-gradient(135deg, var(--bg1), var(--bg2));
+        background-size: 220% 220%;
+        animation: hueFlow 16s ease-in-out infinite;
+        padding: 1.5rem;
+      }
+      @keyframes hueFlow {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        body {
+          animation: none;
+        }
+      }
+      .card {
+        width: min(620px, 100%);
+        padding: 1.5rem;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: var(--card);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 16px 50px rgba(0, 0, 0, 0.35);
+      }
+      h1 {
+        margin: 0 0 0.4rem;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        margin-bottom: 0.3rem;
+      }
+      .brand img {
+        width: 42px;
+        height: 42px;
+      }
+      input {
+        width: 100%;
+        padding: 0.65rem 0.75rem;
+        margin-top: 0.35rem;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: var(--input);
+        color: var(--text);
+        outline: none;
+      }
+      input:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.22);
+      }
+      label {
+        display: block;
+        margin-top: 0.95rem;
+        color: var(--muted);
+      }
+      button {
+        margin-top: 1rem;
+        padding: 0.65rem 1rem;
+        border: 0;
+        border-radius: 10px;
+        color: #052e2b;
+        background: linear-gradient(135deg, var(--primary), var(--primary-2));
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .error {
+        color: #fecaca;
+        margin-top: 0.85rem;
+      }
+      .muted {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+      a {
+        color: #67e8f9;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .topbar {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <button id="themeToggle" type="button">Theme</button>
+    </div>
+    <div class="card">
+      <div class="brand">
+        <img src="/oxy-logo.svg" alt="Oxy logo" />
+        <h1>Oxy Register</h1>
+      </div>
+      <div class="muted">Create an account to access Oxy.</div>
+
+      <form id="registerForm">
+        <label for="username">Username</label>
+        <input id="username" name="username" autocomplete="username" required minlength="3" />
+
+        <label for="email">Email</label>
+        <input id="email" name="email" autocomplete="email" required type="email" />
+
+        <label for="password">Password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          autocomplete="new-password"
+          required
+          minlength="6"
+        />
+
+        <button type="submit">Create account</button>
+      </form>
+
+      <div id="error" class="error" style="display: none;"></div>
+      <div id="success" class="muted" style="display: none; margin-top: 0.75rem;"></div>
+
+      <div class="muted" style="margin-top: 1rem;">
+        Already have an account? <a href="/login.html">Login</a>
+      </div>
+    </div>
+
+    <script type="module" src="/theme.js"></script>
+    <script type="module" src="/register.js"></script>
+  </body>
+</html>

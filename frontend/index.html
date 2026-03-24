@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oxy</title>
+    <style>
+      :root {
+        --bg1: #0f172a;
+        --bg2: #4f46e5;
+        --bg3: #22d3ee;
+        --text: #f8fafc;
+        --muted: #cbd5e1;
+        --card: rgba(15, 23, 42, 0.72);
+        --border: rgba(148, 163, 184, 0.35);
+        --accent: #67e8f9;
+      }
+      :root[data-theme="light"] {
+        --bg1: #f8fafc;
+        --bg2: #dbeafe;
+        --bg3: #22d3ee;
+        --text: #0f172a;
+        --muted: #334155;
+        --card: rgba(255, 255, 255, 0.8);
+        --border: rgba(100, 116, 139, 0.28);
+        --accent: #0f766e;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+        color: var(--text);
+        background: radial-gradient(circle at 15% 10%, #f97316, transparent 25%),
+          radial-gradient(circle at 80% 15%, var(--bg3), transparent 30%),
+          linear-gradient(135deg, var(--bg1), var(--bg2));
+        background-size: 220% 220%;
+        animation: hueFlow 16s ease-in-out infinite;
+      }
+      @keyframes hueFlow {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        body {
+          animation: none;
+        }
+      }
+      .page {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem 1.2rem;
+      }
+      h1 {
+        margin: 0 0 1rem;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        margin-bottom: 1rem;
+      }
+      .brand img {
+        width: 46px;
+        height: 46px;
+      }
+      .row {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .toolbar {
+        justify-content: space-between;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: var(--card);
+        padding: 0.8rem 1rem;
+      }
+      .picker {
+        margin-top: 1rem;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: var(--card);
+        padding: 1rem;
+      }
+      select {
+        min-width: 320px;
+        padding: 0.58rem 0.65rem;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text);
+      }
+      button {
+        padding: 0.58rem 0.85rem;
+        border: 0;
+        border-radius: 10px;
+        color: #0f172a;
+        background: linear-gradient(135deg, #67e8f9, #a78bfa);
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .toolbar-left {
+        display: flex;
+        gap: 0.6rem;
+        align-items: center;
+      }
+      .actions {
+        display: flex;
+        gap: 0.5rem;
+      }
+      .card {
+        margin-top: 1rem;
+        padding: 1rem;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: var(--card);
+      }
+      .muted {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+      .error {
+        color: #fecaca;
+      }
+      code {
+        color: var(--accent);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+          "Courier New", monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="brand">
+        <img src="/oxy-logo.svg" alt="Oxy logo" />
+        <h1>Oxy</h1>
+      </div>
+
+      <div class="row toolbar">
+        <div class="toolbar-left">
+          <button id="themeToggle" type="button">Theme</button>
+          <div class="muted">Signed in as: <span id="userValue"></span></div>
+        </div>
+        <div class="actions">
+          <button id="logoutBtn" type="button">Logout</button>
+        </div>
+      </div>
+
+      <div class="row picker">
+        <label for="timezoneSelect" class="muted">Timezone:</label>
+        <select id="timezoneSelect"></select>
+        <button id="refreshBtn" type="button">Refresh</button>
+      </div>
+
+      <div class="card">
+        <div class="muted" id="status">Loading timezones...</div>
+        <div id="result" style="margin-top: 0.75rem; display: none;">
+          <div>
+            <span class="muted">Timezone:</span> <code id="tzValue"></code>
+          </div>
+          <div style="margin-top: 0.5rem;">
+            <span class="muted">Current time:</span> <code id="timeValue"></code>
+          </div>
+        </div>
+        <div id="error" class="error" style="display: none; margin-top: 0.75rem;"></div>
+      </div>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
